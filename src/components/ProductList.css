@@ -1,0 +1,114 @@
+/* Product Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 20px 0;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Empty State Styling */
+.empty-state {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  padding: 60px 30px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Optional: Add icon before text */
+.empty-state::before {
+  content: "📦";
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* Loading State (optional) */
+.product-grid.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Animation for grid items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-grid > * {
+  animation: fadeInUp 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Stagger animation for grid items */
+.product-grid > *:nth-child(1) { animation-delay: 0.1s; }
+.product-grid > *:nth-child(2) { animation-delay: 0.2s; }
+.product-grid > *:nth-child(3) { animation-delay: 0.3s; }
+.product-grid > *:nth-child(4) { animation-delay: 0.4s; }
+.product-grid > *:nth-child(5) { animation-delay: 0.5s; }
+.product-grid > *:nth-child(6) { animation-delay: 0.6s; }
+.product-grid > *:nth-child(n+7) { animation-delay: 0.7s; }
+
+/* Grid item hover effect for the whole grid area */
+.product-grid:hover .product-card:not(:hover) {
+  opacity: 0.8;
+}
+
+/* Smooth transition for grid layout changes */
+.product-grid {
+  transition: grid-template-columns 0.3s ease;
+}
